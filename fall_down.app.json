@@ -1,0 +1,104 @@
+{
+    "info": {
+        "name": "fall_down",
+        "version": "1.0.0",
+        "category": "events",
+        "keywords": [
+            "events",
+            "fall_down"
+        ],
+        "homepage": "https://answer.bogonets.com/",
+        "bugs": "https://answer.bogonets.com/",
+        "license": "Bogonet License",
+        "author": "wooruang",
+        "dependencies": [
+            {
+                "type": "pip",
+                "src": "numpy"
+            }
+        ],
+        "engines": ">=1.0.2",
+        "environment": {},
+        "titles": {
+            "en": "Fall down detection",
+            "ko": "쓰러짐 탐지"
+        },
+        "descriptions": {
+            "en": "Detect fall down.",
+            "ko": "쓰러진 사람을 탐지한다."
+        },
+        "documentation_mime": "text",
+        "documentations": {},
+        "meta": {}
+    },
+    "controls": {
+        "input": "array",
+        "output": "result"
+    },
+    "props": [
+        {
+            "rule": "read_and_write",
+            "name": "seconds",
+            "default_value": "1",
+            "type": "list",
+            "required": true,
+            "valid": {},
+            "title": {
+                "en": "Seconds",
+                "ko": "기준 초"
+            },
+            "help": {
+                "en": "",
+                "ko": ""
+            }
+        },
+        {
+            "rule": "read_and_write",
+            "name": "labels",
+            "default_value": "Occur1",
+            "type": "list",
+            "required": true,
+            "valid": {},
+            "title": {
+                "en": "Esitmation labels",
+                "ko": "측정 라벨"
+            },
+            "help": {
+                "en": "",
+                "ko": ""
+            }
+        },
+        {
+            "rule": "read_and_write",
+            "name": "estimation_counts",
+            "default_value": "1",
+            "type": "list",
+            "required": true,
+            "valid": {},
+            "title": {
+                "en": "Count of inputs per time",
+                "ko": "측정동안 입력 갯수"
+            },
+            "help": {
+                "en": "",
+                "ko": ""
+            }
+        },
+        {
+            "rule": "read_and_write",
+            "name": "interval_sec",
+            "default_value": "1",
+            "type": "list",
+            "required": true,
+            "valid": {},
+            "title": {
+                "en": "Interval seconds",
+                "ko": "결과 (초)"
+            },
+            "help": {
+                "en": "",
+                "ko": ""
+            }
+        }
+    ]
+}
