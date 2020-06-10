@@ -12,13 +12,13 @@
         "license": "Bogonet License",
         "author": "wooruang",
         "dependencies": [
-            {
-                "type": "pip",
-                "src": "numpy"
-            }
+            { "type": "pip", "src": "numpy" }
         ],
         "engines": ">=1.0.2",
-        "environment": {},
+        "environment": {
+            "type": "pyenv",
+            "name": "fall_down"
+        },
         "titles": {
             "en": "Fall down detection",
             "ko": "쓰러짐 탐지"
