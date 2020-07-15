@@ -40,9 +40,17 @@ class Object:
 
 class ObjectManager:
 
-    def __init__(self, default_life):
+    def __init__(self, default_life=15, center_distance_threshold=0.9, side_size_threshold=0.95):
         self.default_life = default_life
+        self.setCenterDistanceThreshold(center_distance_threshold)
+        self.setSideSizeThreshold(side_size_threshold)
         self.objects = []
+
+    def setCenterDistanceThreshold(self, v):
+        self.center_distance_threshold = v
+
+    def setSideSizeThreshold(self, v):
+        self.side_size_threshold = v
 
     def setDefaultLife(self, v):
         self.default_life = v
@@ -80,7 +88,7 @@ class ObjectManager:
             o.increaseDuration()
             exist = False
             for n in bboxes:
-                if not compare(o.bbox, n):
+                if not compare(o.bbox, n, self.center_distance_threshold, self.side_size_threshold):
                     continue
 
                 exist = True
@@ -95,7 +103,7 @@ class ObjectManager:
         for n in bboxes:
             exist = False
             for o in self.objects:
-                if not compare(o.bbox, n):
+                if not compare(o.bbox, n, self.center_distance_threshold, self.side_size_threshold):
                     continue
                 exist = True
 
@@ -108,7 +116,7 @@ class ObjectManager:
         for o in self.objects:
             if o.life <= 0:
                 remove.append(o)
-            elif not compare(o.origin_bbox, o.bbox):
+            elif not compare(o.origin_bbox, o.bbox, self.center_distance_threshold, self.side_size_threshold):
                 remove.append(o)
 
         for o in remove:
@@ -176,10 +184,7 @@ def compare_side(old, new, threshold):
 
 
 # [xmin, ymin, xmax, ymax, score, label]
-def compare(old, new):
-
-    center_distance_threshold = 0.9
-    side_size_threshold = 0.95
+def compare(old, new, center_distance_threshold=0.9, side_size_threshold=0.95):
 
     old_c = get_center(old)
     new_c = get_center(new)
