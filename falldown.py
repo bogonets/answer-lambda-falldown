@@ -1,5 +1,6 @@
 import sys
 import math
+import numpy as np
 
 XMIN_INDEX = 0
 YMIN_INDEX = 1
@@ -71,6 +72,9 @@ class ObjectManager:
         return bboxes, durations, lifes
 
     def run(self, bboxes):
+        if isinstance(bboxes, np.ndarray):
+            bboxes = bboxes.tolist()
+
         if not self.objects:
             self.setObjectsByBboxes(bboxes)
             return

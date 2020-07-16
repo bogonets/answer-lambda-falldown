@@ -32,20 +32,20 @@
         "meta": {}
     },
     "controls": {
-        "input": "array",
+        "input": "bboxes",
         "output": "result"
     },
     "props": [
         {
             "rule": "read_and_write",
-            "name": "seconds",
-            "default_value": "1",
-            "type": "list",
+            "name": "falldown_frame_count",
+            "default_value": "60",
+            "type": "int",
             "required": true,
             "valid": {},
             "title": {
-                "en": "Seconds",
-                "ko": "기준 초"
+                "en": "A frame count for being falldown",
+                "ko": "쓰러짐 탐지 프레임 수"
             },
             "help": {
                 "en": "",
@@ -54,14 +54,14 @@
         },
         {
             "rule": "read_and_write",
-            "name": "labels",
-            "default_value": "Occur1",
-            "type": "list",
+            "name": "min_keep_frame",
+            "default_value": "15",
+            "type": "int",
             "required": true,
             "valid": {},
             "title": {
-                "en": "Esitmation labels",
-                "ko": "측정 라벨"
+                "en": "A min number of Keeping frame",
+                "ko": "최소 유지 프레임 수"
             },
             "help": {
                 "en": "",
@@ -70,14 +70,14 @@
         },
         {
             "rule": "read_and_write",
-            "name": "estimation_counts",
-            "default_value": "1",
-            "type": "list",
+            "name": "center_distance_threshold",
+            "default_value": "0.9",
+            "type": "float",
             "required": true,
             "valid": {},
             "title": {
-                "en": "Count of inputs per time",
-                "ko": "측정동안 입력 갯수"
+                "en": "Center distance threshold",
+                "ko": "중앙 거리 임계치"
             },
             "help": {
                 "en": "",
@@ -86,14 +86,14 @@
         },
         {
             "rule": "read_and_write",
-            "name": "interval_sec",
-            "default_value": "1",
-            "type": "list",
+            "name": "side_size_threshold",
+            "default_value": "0.95",
+            "type": "float",
             "required": true,
             "valid": {},
             "title": {
-                "en": "Interval seconds",
-                "ko": "결과 (초)"
+                "en": "Side size threshold",
+                "ko": "크기 임계치"
             },
             "help": {
                 "en": "",
