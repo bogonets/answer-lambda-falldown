@@ -48,6 +48,9 @@ def on_init():
 
 def on_run(bboxes):
 
+    if not bboxes.shape:
+        return {'result': None}
+
     obj_manager.run(bboxes)
 
     falldown_bboxes, durations, lifes = obj_manager.getBboxes(falldown_frame_count)
@@ -55,11 +58,13 @@ def on_run(bboxes):
     # sys.stdout.write(f"[fall_down] falldown_bboxes {falldown_bboxes} {type(falldown_bboxes)}\n")
     # sys.stdout.flush()
 
-    return {
-        'result': np.array(falldown_bboxes)
-        }
+    if falldown_bboxes:
+        return {'result': np.array(falldown_bboxes)}
+    else:
+        return {'result': None}
 
 
 def on_destroy():
     return True
+
 
